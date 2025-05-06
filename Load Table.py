@@ -1,4 +1,5 @@
 import originpro as op
+import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 import os
@@ -37,9 +38,23 @@ for path in file_paths:
     wks = book.add_sheet()
     wks.activate()
     try:
-        wks.from_file(path)
-        wks.name = sheet_name  
+        if path.endswith('.csv'):
+            try:
+                df = pd.read_csv(path)
+            except Exception as e:
+                print(f"Fail load: {path}, due to: {e}.")
+                continue
+        else:
+            df = pd.read_excel(path)
+
+        if df.empty:
+            print(f"Skipped {path}.")
+            continue
+
+        wks.from_df(df)
+        wks.name = sheet_name
         wks.label = sheet_name
+
     except Exception as e:
         print(f"Failed in loading {filename}, as {e}.")
         continue
