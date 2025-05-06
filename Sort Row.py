@@ -21,9 +21,9 @@ column_data_dict = {}
 
 for file_path in file_paths:
     try:
-        df = pd.read_csv(file_path, encoding='utf-8')  # 可改为 'gbk' 如果乱码
+        df = pd.read_csv(file_path, encoding='utf-8')
     except Exception as e:
-        print(f"读取失败：{file_path}，原因：{e}")
+        print(f"Load {file_path} failed, due to {e}.")
         continue
 
     file_base = os.path.splitext(os.path.basename(file_path))[0]
