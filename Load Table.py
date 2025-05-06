@@ -16,8 +16,9 @@ root = tk.Tk()
 root.withdraw()
 
 file_paths = filedialog.askopenfilenames(
-    title="Select Excel",
-    filetypes=[("Excel Document", "*.xlsx")]
+    title="select file",
+    initialdir=last_dir,
+    filetypes=[("get file", "*.xlsx *.xls *.csv")]
 )
 
 if not file_paths:
@@ -35,7 +36,11 @@ for path in file_paths:
 
     wks = book.add_sheet()
     wks.activate()
-    wks.from_file(path)
-    wks.label = sheet_name
+    try:
+        wks.from_file(path)
+        wks.label = sheet_name
+    except Exception as e:
+        print(f"Failed in loading {filename}, as {e}.")
+        continue
 
-print("Get all excel!")
+print("Load all.")
