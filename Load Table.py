@@ -16,7 +16,7 @@ if not file_paths:
     print("Cancel selection")
     exit()
 
-book = op.new_book('w', lname='Excel_Merged')
+book = op.new_book('w', lname='')
 
 for path in file_paths:
     filename = os.path.basename(path)

@@ -21,7 +21,7 @@ column_data_dict = {}
 
 for file_path in file_paths:
     df = pd.read_excel(file_path)
-    file_base = os.path.splitext(os.path.basename(file_path))[0]  # 文件名无扩展名
+    file_base = os.path.splitext(os.path.basename(file_path))[0]
 
     for col_index in target_columns:
         if col_index < len(df.columns):
