@@ -38,6 +38,7 @@ for path in file_paths:
     wks.activate()
     try:
         wks.from_file(path)
+        wks.name = sheet_name  
         wks.label = sheet_name
     except Exception as e:
         print(f"Failed in loading {filename}, as {e}.")
