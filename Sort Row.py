@@ -15,7 +15,7 @@ if not file_paths:
     print("Canceled")
     exit()
 
-target_columns = [4, 5, 6, 9]
+target_columns = [5, 6, 7, 10]
 
 column_data_dict = {}
 
