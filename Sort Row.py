@@ -8,7 +8,7 @@ root.withdraw()
 
 file_paths = filedialog.askopenfilenames(
     title="Select Excel",
-    filetypes=[("Excel files", "*.xlsx *.xls")]
+    filetypes=[("Excel or CSV files", "*.xlsx *.xls *.csv")]
 )
 
 if not file_paths:
